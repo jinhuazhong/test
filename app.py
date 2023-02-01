@@ -19,3 +19,8 @@ def hello_world():  # put application's code here
 @app.route('/api/recognize', methods=['POST'])
 def recognize_api():
     file = request.files["document"]
+    data = {
+        'success': None,
+        'failure_reason': None,
+
+    }
