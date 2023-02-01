@@ -3,11 +3,14 @@ from math import *
 import numpy as np
 from detect.ctpn_predict import get_det_boxes
 from recognize.crnn_recognizer import PytorchOcr
+
 recognizer = PytorchOcr()
+
 
 def dis(image):
     cv2.imshow('image', image)
     cv2.waitKey(0)
+
 
 def sort_box(box):
     """
@@ -15,6 +18,7 @@ def sort_box(box):
     """
     box = sorted(box, key=lambda x: sum([x[1], x[3], x[5], x[7]]))
     return box
+
 
 def dumpRotateImage(img, degree, pt1, pt2, pt3, pt4):
     height, width = img.shape[:2]
@@ -70,6 +74,7 @@ def charRec(img, text_recs, adjust=False):
 
     return results
 
+
 def ocr(image):
     # detect
     text_recs, img_framed, image = get_det_boxes(image)
@@ -77,16 +82,16 @@ def ocr(image):
     result = charRec(image, text_recs)
     return result, img_framed
 
+
 if __name__ == '__main__':
-    arr = ['付金额按忽然','54dsggd','uifhiuh']
-    data = {'yuyu':'rfhrui'}
+    arr = ['付金额按忽然', '54dsggd', 'uifhiuh']
+    data = {'yuyu': 'rfhrui'}
     page = 1
     temp = ""
     temp = "".join(arr)
-    #print(temp)
+    # print(temp)
     data[page] = temp
     print(data)
-
 
     #
     # data[page] = arr
@@ -105,5 +110,3 @@ if __name__ == '__main__':
 
     # arr1.append(temp)
     # print(arr1)
-
-
